@@ -1,0 +1,219 @@
+{% extends "links/base.html" %}
+
+{% block title %}
+    Dashboard — Shortify
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard">
+
+    <div class="container">
+
+        <div class="dashboard-header">
+
+            <div>
+                <span class="section-label">
+                    <i class="bi bi-grid"></i>
+                    Dashboard
+                </span>
+
+                <h1>Manage your links</h1>
+
+                <p>
+                    View, search and manage all your shortened URLs.
+                </p>
+            </div>
+
+            <a
+                href="{% url 'links:home' %}"
+                class="primary-button"
+            >
+                <i class="bi bi-plus-lg"></i>
+                Create Link
+            </a>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="bi bi-link-45deg"></i>
+                </div>
+
+                <div>
+                    <span>Total Links</span>
+                    <strong>{{ total_links }}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="bi bi-cursor"></i>
+                </div>
+
+                <div>
+                    <span>Total Clicks</span>
+                    <strong>{{ total_clicks }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="dashboard-toolbar">
+
+            <form method="GET" class="search-form">
+
+                <i class="bi bi-search"></i>
+
+                <input
+                    type="search"
+                    name="q"
+                    value="{{ search_query }}"
+                    placeholder="Search links..."
+                >
+
+                {% if search_query %}
+                    <a href="{% url 'links:dashboard' %}">
+                        Clear
+                    </a>
+                {% endif %}
+
+            </form>
+
+        </div>
+
+
+        <!-- Links -->
+
+        <div class="links-card">
+
+            <div class="table-header">
+                <h2>Your Links</h2>
+
+                <span>
+                    {{ links|length }} result{{ links|length|pluralize }}
+                </span>
+            </div>
+
+
+            {% if links %}
+
+                <div class="links-list">
+
+                    {% for link in links %}
+
+                        <div class="link-row">
+
+                            <div class="link-main">
+
+                                <div class="link-icon">
+                                    <i class="bi bi-link-45deg"></i>
+                                </div>
+
+                                <div class="link-info">
+
+                                    <a
+                                        href="{% url 'links:redirect_short_url' link.short_code %}"
+                                        class="short-code"
+                                    >
+                                        /{{ link.short_code }}/
+                                    </a>
+
+                                    <span class="original-url">
+                                        {{ link.original_url }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="link-clicks">
+
+                                <strong>
+                                    {{ link.clicks }}
+                                </strong>
+
+                                <span>
+                                    clicks
+                                </span>
+
+                            </div>
+
+
+                            <div class="link-date">
+
+                                {{ link.created_at|date:"M d, Y" }}
+
+                            </div>
+
+
+                            <div class="link-actions">
+
+                                <a
+                                    href="{% url 'links:detail' link.short_code %}"
+                                    title="View details"
+                                >
+                                    <i class="bi bi-eye"></i>
+                                </a>
+
+                                <a
+                                    href="{% url 'links:redirect_short_url' link.short_code %}"
+                                    title="Open link"
+                                    target="_blank"
+                                >
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state">
+
+                    <i class="bi bi-link-45deg"></i>
+
+                    <h3>No links found</h3>
+
+                    <p>
+                        Create your first shortened URL to see it here.
+                    </p>
+
+                    <a
+                        href="{% url 'links:home' %}"
+                        class="primary-button"
+                    >
+                        Create Short URL
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
