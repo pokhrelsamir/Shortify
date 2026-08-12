@@ -1,4 +1,3 @@
-```markdown
 # 🔗 Shortify — URL Shortener
 
 <p align="center">
@@ -149,7 +148,6 @@ Shortify/
 ├── README.md
 └── requirements.txt
 
-```
 
 ### 🔄 How Shortify Works
 
