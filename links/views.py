@@ -81,7 +81,9 @@ def detail(request, short_code):
     return render(
         request,
         "links/detail.html",
-        {"link": link},
+        {
+            "link": link,
+        },
     )
 
 

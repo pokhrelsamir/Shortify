@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shortify — Link Details</title>
+</head>
+
+<body>
+
+    <h1>Shortify Link Details</h1>
+
+    <hr>
+
+    <p>
+        <strong>Short Code:</strong>
+        {{ link.short_code }}
+    </p>
+
+    <p>
+        <strong>Original URL:</strong>
+        {{ link.original_url }}
+    </p>
+
+    <p>
+        <strong>Clicks:</strong>
+        {{ link.clicks }}
+    </p>
+
+    <p>
+        <strong>Created:</strong>
+        {{ link.created_at }}
+    </p>
+
+    <p>
+        <strong>Updated:</strong>
+        {{ link.updated_at }}
+    </p>
+
+    <hr>
+
+    <a href="{% url 'links:dashboard' %}">
+        Back to Dashboard
+    </a>
+
+</body>
+</html>
