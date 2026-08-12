@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import ShortURLForm
+from .models import ShortURL
 
 
 def home(request):
@@ -10,8 +11,7 @@ def home(request):
         form = ShortURLForm(request.POST)
 
         if form.is_valid():
-            link = form.save()
-            short_url = link
+            short_url = form.save()
     else:
         form = ShortURLForm()
 
@@ -25,3 +25,15 @@ def home(request):
         "links/home.html",
         context,
     )
+
+
+def redirect_short_url(request, short_code):
+    link = get_object_or_404(
+        ShortURL,
+        short_code=short_code,
+    )
+
+    link.clicks += 1
+    link.save(update_fields=["clicks", "updated_at"])
+
+    return redirect(link.original_url)
