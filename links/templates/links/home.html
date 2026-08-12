@@ -1,0 +1,110 @@
+{% extends "links/base.html" %}
+
+{% block title %}
+    Shortify — URL Shortener
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="container hero-content">
+
+        <div class="hero-badge">
+            <i class="bi bi-link-45deg"></i>
+            Simple URL Shortener
+        </div>
+
+
+        <h1>
+            Make your URLs
+            <span>short & simple.</span>
+        </h1>
+
+
+        <p class="hero-description">
+            Transform long URLs into short, shareable links
+            in seconds.
+        </p>
+
+
+        <div class="shortener-card">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="input-group">
+
+                    {{ form.original_url }}
+
+                    <button
+                        type="submit"
+                        class="shorten-button"
+                    >
+                        <i class="bi bi-scissors"></i>
+                        Shorten URL
+                    </button>
+
+                </div>
+
+
+                {% if form.original_url.errors %}
+
+                    <div class="form-error">
+
+                        <i class="bi bi-exclamation-circle"></i>
+
+                        {{ form.original_url.errors.0 }}
+
+                    </div>
+
+                {% endif %}
+
+            </form>
+
+
+            {% if short_url %}
+
+                <div class="result-card">
+
+                    <div class="result-icon">
+                        <i class="bi bi-check-lg"></i>
+                    </div>
+
+                    <div class="result-content">
+
+                        <span>
+                            Your shortened URL
+                        </span>
+
+                        <a
+                            href="{% url 'links:redirect_short_url' short_url.short_code %}"
+                            id="short-url"
+                        >
+                            {{ request.scheme }}://{{ request.get_host }}{% url 'links:redirect_short_url' short_url.short_code %}
+                        </a>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="copy-button"
+                        onclick="copyShortURL()"
+                    >
+                        <i class="bi bi-copy"></i>
+                        Copy
+                    </button>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
