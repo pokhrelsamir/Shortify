@@ -11,11 +11,18 @@
 
     <div class="container hero-content">
 
+        <!-- Hero Badge -->
+
         <div class="hero-badge">
+
             <i class="bi bi-link-45deg"></i>
+
             Simple URL Shortener
+
         </div>
 
+
+        <!-- Hero Heading -->
 
         <h1>
             Make your URLs
@@ -29,6 +36,8 @@
         </p>
 
 
+        <!-- Shortener Card -->
+
         <div class="shortener-card">
 
             <form method="POST">
@@ -36,37 +45,34 @@
                 {% csrf_token %}
 
 
-                <!-- URL Input -->
+                <!-- Destination URL -->
 
-                <div class="input-group">
+                <div class="form-field">
+
+                    <label for="{{ form.original_url.id_for_label }}">
+                        <i class="bi bi-globe2"></i>
+                        Destination URL
+                    </label>
 
                     {{ form.original_url }}
 
-                    <button
-                        type="submit"
-                        class="shorten-button"
-                    >
-                        <i class="bi bi-scissors"></i>
-                        Shorten URL
-                    </button>
+
+                    {% if form.original_url.errors %}
+
+                        <div class="form-error">
+
+                            <i class="bi bi-exclamation-circle"></i>
+
+                            {{ form.original_url.errors.0 }}
+
+                        </div>
+
+                    {% endif %}
 
                 </div>
 
 
-                {% if form.original_url.errors %}
-
-                    <div class="form-error">
-
-                        <i class="bi bi-exclamation-circle"></i>
-
-                        {{ form.original_url.errors.0 }}
-
-                    </div>
-
-                {% endif %}
-
-
-                <!-- Expiration -->
+                <!-- Link Expiration -->
 
                 <div class="expiration-wrapper">
 
@@ -110,17 +116,39 @@
 
                 {% endif %}
 
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="shorten-button"
+                >
+
+                    <i class="bi bi-scissors"></i>
+
+                    Shorten URL
+
+                </button>
+
             </form>
 
+
+            <!-- Result -->
 
             {% if short_url %}
 
                 <div class="result-card">
 
+                    <!-- Success Icon -->
+
                     <div class="result-icon">
+
                         <i class="bi bi-check-lg"></i>
+
                     </div>
 
+
+                    <!-- Result Content -->
 
                     <div class="result-content">
 
@@ -128,24 +156,55 @@
                             Your shortened URL
                         </span>
 
-                    <a
-                    href="{% url 'links:redirect_short_url' short_url.short_code %}"
-                    id="short-url"
-                    >
-                    
-                    {{ short_url_full }}
-                    </a>
+
+                        <a
+                            href="{% url 'links:redirect_short_url' short_url.short_code %}"
+                            id="short-url"
+                        >
+                            {{ short_url_full }}
+                        </a>
+
+
+                        <!-- Expiration Information -->
+
+                        {% if short_url.expires_at %}
+
+                            <span class="result-expiration">
+
+                                <i class="bi bi-clock"></i>
+
+                                Expires
+                                {{ short_url.expires_at|date:"M d, Y h:i A" }}
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="result-expiration">
+
+                                <i class="bi bi-infinity"></i>
+
+                                Never expires
+
+                            </span>
+
+                        {% endif %}
 
                     </div>
 
+
+                    <!-- Copy -->
 
                     <button
                         type="button"
                         class="copy-button"
                         onclick="copyShortURL()"
                     >
+
                         <i class="bi bi-copy"></i>
+
                         Copy
+
                     </button>
 
                 </div>

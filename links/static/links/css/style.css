@@ -2549,3 +2549,155 @@ h1 span {
     }
 
 }
+
+/* =========================================================
+   EXPIRATION FORM
+========================================================= */
+
+.form-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+
+.form-field label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #334155;
+
+    font-size: 0.76rem;
+
+    font-weight: 700;
+}
+
+
+.form-field label i {
+    color: #6366f1;
+}
+
+
+/* URL Input */
+
+.form-field .url-input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    font-size: 0.82rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-field .url-input:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* Expiration Select */
+
+.expiration-select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 0.8rem;
+
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.expiration-select:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+.expiration-select:hover {
+    border-color: #cbd5e1;
+}
+
+
+/* Expiration Field */
+
+.expiration-field {
+    margin-bottom: 20px;
+}
+
+
+/* Submit Button */
+
+.form-field + .expiration-field + .shorten-button {
+    width: 100%;
+}
+
+/* =========================================================
+   RESULT EXPIRATION
+========================================================= */
+
+.result-expiration {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 7px;
+
+    color: #64748b;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+}
+
+
+.result-expiration i {
+    color: #6366f1;
+}

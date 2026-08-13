@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import timezone
 
 from .models import ShortURL
 
@@ -7,20 +8,21 @@ class ShortURLForm(forms.ModelForm):
 
     EXPIRATION_CHOICES = [
         ("never", "Never"),
-        ("1_day", "1 Day"),
-        ("7_days", "7 Days"),
-        ("30_days", "30 Days"),
+        ("1h", "1 hour"),
+        ("1d", "1 day"),
+        ("7d", "7 days"),
+        ("30d", "30 days"),
     ]
 
     expiration = forms.ChoiceField(
         choices=EXPIRATION_CHOICES,
-        required=False,
         initial="never",
         widget=forms.Select(
             attrs={
                 "class": "expiration-select",
             }
         ),
+        label="Expiration",
     )
 
     class Meta:
@@ -42,5 +44,31 @@ class ShortURLForm(forms.ModelForm):
 
         labels = {
             "original_url": "",
-            "expiration": "Expiration",
         }
+
+    def save(self, commit=True):
+        link = super().save(commit=False)
+
+        expiration = self.cleaned_data.get("expiration")
+
+        now = timezone.now()
+
+        if expiration == "1h":
+            link.expires_at = now + timezone.timedelta(hours=1)
+
+        elif expiration == "1d":
+            link.expires_at = now + timezone.timedelta(days=1)
+
+        elif expiration == "7d":
+            link.expires_at = now + timezone.timedelta(days=7)
+
+        elif expiration == "30d":
+            link.expires_at = now + timezone.timedelta(days=30)
+
+        else:
+            link.expires_at = None
+
+        if commit:
+            link.save()
+
+        return link
