@@ -2125,11 +2125,11 @@ h1 span {
     align-items: center;
     justify-content: center;
 
-    min-width: 115px;
+    min-width: 125px;
 }
 
 
-/* Shared Status Badge */
+/* Status Badge */
 
 .status-badge {
     display: inline-flex;
@@ -2140,7 +2140,7 @@ h1 span {
 
     min-height: 28px;
 
-    padding: 5px 10px;
+    padding: 6px 11px;
 
     border-radius: 999px;
 
@@ -2156,45 +2156,45 @@ h1 span {
 /* Active */
 
 .status-active {
-    border: 1px solid #bbf7d0;
+    color: #15803d;
 
     background: #f0fdf4;
 
-    color: #15803d;
+    border: 1px solid #bbf7d0;
 }
 
 
 /* Never Expires */
 
 .status-never {
-    border: 1px solid #ddd6fe;
+    color: #6d28d9;
 
     background: #f5f3ff;
 
-    color: #6d28d9;
+    border: 1px solid #ddd6fe;
 }
 
 
 /* Expired */
 
 .status-expired {
-    border: 1px solid #fecaca;
+    color: #dc2626;
 
     background: #fef2f2;
 
-    color: #dc2626;
+    border: 1px solid #fecaca;
 }
 
 
-/* Status Icons */
+/* Status Icon */
 
 .status-badge i {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
 }
 
 
 /* =========================================================
-   RESPONSIVE STATUS
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width: 1000px) {
@@ -2222,9 +2222,9 @@ h1 span {
 @media (max-width: 550px) {
 
     .link-status {
-        margin-left: 0;
-
         width: 100%;
+
+        margin-left: 0;
 
         justify-content: flex-start;
     }
