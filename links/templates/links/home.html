@@ -128,12 +128,13 @@
                             Your shortened URL
                         </span>
 
-                        <a
-                            href="{% url 'links:redirect_short_url' short_url.short_code %}"
-                            id="short-url"
-                        >
-                            {{ request.scheme }}://{{ request.get_host }}{% url 'links:redirect_short_url' short_url.short_code %}
-                        </a>
+                    <a
+                    href="{% url 'links:redirect_short_url' short_url.short_code %}"
+                    id="short-url"
+                    >
+                    
+                    {{ short_url_full }}
+                    </a>
 
                     </div>
 
