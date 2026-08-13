@@ -87,13 +87,9 @@
                 >
 
                 {% if search_query %}
-
-                    <a
-                        href="{% url 'links:dashboard' %}"
-                    >
+                    <a href="{% url 'links:dashboard' %}">
                         Clear
                     </a>
-
                 {% endif %}
 
             </form>
@@ -125,6 +121,8 @@
 
                         <div class="link-row">
 
+                            <!-- Link -->
+
                             <div class="link-main">
 
                                 <div class="link-icon">
@@ -149,6 +147,8 @@
                             </div>
 
 
+                            <!-- Clicks -->
+
                             <div class="link-clicks">
 
                                 <strong>
@@ -162,12 +162,55 @@
                             </div>
 
 
+                            <!-- Created Date -->
+
                             <div class="link-date">
 
                                 {{ link.created_at|date:"M d, Y" }}
 
                             </div>
 
+
+                            <!-- Expiration Status -->
+
+                            <div class="link-status">
+
+                                {% if link.is_expired %}
+
+                                    <span
+                                        class="status-badge status-expired"
+                                        title="This link has expired"
+                                    >
+                                        <i class="bi bi-x-circle"></i>
+                                        Expired
+                                    </span>
+
+                                {% elif link.is_expiring %}
+
+                                    <span
+                                        class="status-badge status-active"
+                                        title="This link is currently active"
+                                    >
+                                        <i class="bi bi-check-circle"></i>
+                                        Active
+                                    </span>
+
+                                {% else %}
+
+                                    <span
+                                        class="status-badge status-never"
+                                        title="This link never expires"
+                                    >
+                                        <i class="bi bi-infinity"></i>
+                                        Never expires
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- Actions -->
 
                             <div class="link-actions">
 
@@ -205,12 +248,13 @@
                         <div class="pagination-info">
 
                             Showing
+
                             <strong>
                                 {{ page_obj.start_index }}
                             </strong>
 
                             –
-                            
+
                             <strong>
                                 {{ page_obj.end_index }}
                             </strong>
