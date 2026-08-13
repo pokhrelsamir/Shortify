@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import ShortURLForm
 from .models import ShortURL
 from django.db.models import Q, Sum
+from django.core.paginator import Paginator
+
 
 def home(request):
     short_url = None
@@ -63,8 +65,15 @@ def dashboard(request):
         else 0
     )
 
+    paginator = Paginator(links, 10)
+
+    page_number = request.GET.get("page")
+
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        "links": links,
+        "links": page_obj,
+        "page_obj": page_obj,
         "search_query": search_query,
         "total_links": total_links,
         "total_clicks": total_clicks,
