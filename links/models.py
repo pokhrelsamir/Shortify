@@ -15,17 +15,34 @@ def generate_short_code(length=6):
 
 class ShortURL(models.Model):
     original_url = models.URLField(max_length=2048)
+
     short_code = models.CharField(
         max_length=10,
         unique=True,
     )
-    clicks = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
+    clicks = models.PositiveIntegerField(
+        default=0
+    )
+
+    expires_at = models.DateTimeField(
+        null=True,
+        blank=True,
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
 
     class Meta:
         ordering = ["-created_at"]
+
         verbose_name = "Short URL"
+
         verbose_name_plural = "Short URLs"
 
     def save(self, *args, **kwargs):
