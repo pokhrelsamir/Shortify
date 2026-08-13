@@ -1,0 +1,92 @@
+{% extends "links/base.html" %}
+
+{% block title %}
+    Link Expired — Shortify
+{% endblock %}
+
+
+{% block content %}
+
+<section class="detail-page">
+
+    <div class="container detail-container">
+
+        <div class="detail-card expired-card">
+
+            <div class="expired-icon">
+                <i class="bi bi-clock-history"></i>
+            </div>
+
+
+            <span class="detail-eyebrow">
+                LINK EXPIRED
+            </span>
+
+
+            <h1>
+                This link has expired
+            </h1>
+
+
+            <p class="expired-description">
+                The shortened URL you are trying to access
+                is no longer active.
+            </p>
+
+
+            <div class="expired-url">
+
+                <i class="bi bi-link-45deg"></i>
+
+                <span>
+                    /{{ link.short_code }}/
+                </span>
+
+            </div>
+
+
+            {% if link.expires_at %}
+
+                <div class="expired-date">
+
+                    <i class="bi bi-calendar-x"></i>
+
+                    <span>
+                        Expired on
+                        <strong>
+                            {{ link.expires_at|date:"M d, Y h:i A" }}
+                        </strong>
+                    </span>
+
+                </div>
+
+            {% endif %}
+
+
+            <div class="expired-actions">
+
+                <a
+                    href="{% url 'links:home' %}"
+                    class="primary-button"
+                >
+                    <i class="bi bi-plus-lg"></i>
+                    Create New Link
+                </a>
+
+                <a
+                    href="{% url 'links:dashboard' %}"
+                    class="secondary-button"
+                >
+                    <i class="bi bi-grid"></i>
+                    Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
