@@ -2114,3 +2114,119 @@ h1 span {
     }
 
 }
+
+
+/* =========================================================
+   LINK STATUS
+========================================================= */
+
+.link-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 115px;
+}
+
+
+/* Shared Status Badge */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 28px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* Active */
+
+.status-active {
+    border: 1px solid #bbf7d0;
+
+    background: #f0fdf4;
+
+    color: #15803d;
+}
+
+
+/* Never Expires */
+
+.status-never {
+    border: 1px solid #ddd6fe;
+
+    background: #f5f3ff;
+
+    color: #6d28d9;
+}
+
+
+/* Expired */
+
+.status-expired {
+    border: 1px solid #fecaca;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+}
+
+
+/* Status Icons */
+
+.status-badge i {
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE STATUS
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .link-status {
+        min-width: auto;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .link-row {
+        flex-wrap: wrap;
+    }
+
+    .link-status {
+        margin-left: 45px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .link-status {
+        margin-left: 0;
+
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+}
