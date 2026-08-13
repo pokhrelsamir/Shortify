@@ -11,6 +11,7 @@ from .models import ShortURL
 
 def home(request):
     short_url = None
+    short_url_full = None
 
     if request.method == "POST":
         form = ShortURLForm(request.POST)
@@ -34,12 +35,17 @@ def home(request):
 
             short_url.save()
 
+            short_url_full = request.build_absolute_uri(
+                f"/{short_url.short_code}/"
+            )
+
     else:
         form = ShortURLForm()
 
     context = {
         "form": form,
         "short_url": short_url,
+        "short_url_full": short_url_full,
     }
 
     return render(
