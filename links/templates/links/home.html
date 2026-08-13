@@ -35,6 +35,9 @@
 
                 {% csrf_token %}
 
+
+                <!-- URL Input -->
+
                 <div class="input-group">
 
                     {{ form.original_url }}
@@ -62,6 +65,51 @@
 
                 {% endif %}
 
+
+                <!-- Expiration -->
+
+                <div class="expiration-wrapper">
+
+                    <div class="expiration-label">
+
+                        <i class="bi bi-clock"></i>
+
+                        <div>
+
+                            <strong>
+                                Link expiration
+                            </strong>
+
+                            <span>
+                                Choose how long this link should remain active.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="expiration-control">
+
+                        {{ form.expiration }}
+
+                    </div>
+
+                </div>
+
+
+                {% if form.expiration.errors %}
+
+                    <div class="form-error">
+
+                        <i class="bi bi-exclamation-circle"></i>
+
+                        {{ form.expiration.errors.0 }}
+
+                    </div>
+
+                {% endif %}
+
             </form>
 
 
@@ -72,6 +120,7 @@
                     <div class="result-icon">
                         <i class="bi bi-check-lg"></i>
                     </div>
+
 
                     <div class="result-content">
 
@@ -87,6 +136,7 @@
                         </a>
 
                     </div>
+
 
                     <button
                         type="button"
