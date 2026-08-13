@@ -1,10 +1,12 @@
-from django.db.models import Q
+from datetime import timedelta
+
+from django.core.paginator import Paginator
+from django.db.models import Q, Sum
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 
 from .forms import ShortURLForm
 from .models import ShortURL
-from django.db.models import Q, Sum
-from django.core.paginator import Paginator
 
 
 def home(request):
@@ -14,7 +16,24 @@ def home(request):
         form = ShortURLForm(request.POST)
 
         if form.is_valid():
-            short_url = form.save()
+            short_url = form.save(commit=False)
+
+            expiration = form.cleaned_data.get("expiration")
+
+            if expiration == "1_day":
+                short_url.expires_at = timezone.now() + timedelta(days=1)
+
+            elif expiration == "7_days":
+                short_url.expires_at = timezone.now() + timedelta(days=7)
+
+            elif expiration == "30_days":
+                short_url.expires_at = timezone.now() + timedelta(days=30)
+
+            else:
+                short_url.expires_at = None
+
+            short_url.save()
+
     else:
         form = ShortURLForm()
 
@@ -36,8 +55,28 @@ def redirect_short_url(request, short_code):
         short_code=short_code,
     )
 
+    # Check whether the link has expired.
+    if (
+        link.expires_at is not None
+        and timezone.now() >= link.expires_at
+    ):
+        return render(
+            request,
+            "links/expired.html",
+            {
+                "link": link,
+            },
+            status=410,
+        )
+
     link.clicks += 1
-    link.save(update_fields=["clicks", "updated_at"])
+
+    link.save(
+        update_fields=[
+            "clicks",
+            "updated_at",
+        ]
+    )
 
     return redirect(link.original_url)
 
@@ -65,11 +104,16 @@ def dashboard(request):
         else 0
     )
 
-    paginator = Paginator(links, 10)
+    paginator = Paginator(
+        links,
+        10,
+    )
 
     page_number = request.GET.get("page")
 
-    page_obj = paginator.get_page(page_number)
+    page_obj = paginator.get_page(
+        page_number
+    )
 
     context = {
         "links": page_obj,
@@ -83,7 +127,7 @@ def dashboard(request):
     return render(
         request,
         "links/dashboard.html",
-        context
+        context,
     )
 
 
@@ -111,4 +155,6 @@ def delete_link(request, short_code):
     if request.method == "POST":
         link.delete()
 
-    return redirect("links:dashboard")
+    return redirect(
+        "links:dashboard"
+    )
