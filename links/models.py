@@ -2,6 +2,7 @@ import secrets
 import string
 
 from django.db import models
+from django.utils import timezone
 
 
 def generate_short_code(length=6):
@@ -44,6 +45,31 @@ class ShortURL(models.Model):
         verbose_name = "Short URL"
 
         verbose_name_plural = "Short URLs"
+
+    @property
+    def is_expired(self):
+        """
+        Returns True when the link has passed its expiration time.
+        Links without an expiration date never expire.
+        """
+        if self.expires_at is None:
+            return False
+
+        return timezone.now() >= self.expires_at
+
+    @property
+    def is_expiring(self):
+        """
+        Returns True when the link has an expiration date
+        and that date has not been reached yet.
+        """
+        if self.expires_at is None:
+            return False
+
+        if self.is_expired:
+            return False
+
+        return True
 
     def save(self, *args, **kwargs):
         if not self.short_code:
