@@ -61,20 +61,17 @@ def redirect_short_url(request, short_code):
         short_code=short_code,
     )
 
-    # Check whether the link has expired.
-    if (
-        link.expires_at is not None
-        and timezone.now() >= link.expires_at
-    ):
+    # Prevent expired links from redirecting
+    if link.is_expired:
         return render(
             request,
             "links/expired.html",
             {
                 "link": link,
             },
-            status=410,
         )
 
+    # Count successful redirects only
     link.clicks += 1
 
     link.save(
