@@ -2230,3 +2230,131 @@ h1 span {
     }
 
 }
+
+
+/* =========================================================
+   DETAIL PAGE — EXPIRATION
+========================================================= */
+
+.expiration-icon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+
+/* Expiration Information */
+
+.expiration-info {
+    margin-top: 28px;
+}
+
+
+.expiration-message {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 15px 17px;
+
+    border-radius: 12px;
+
+    border: 1px solid;
+}
+
+
+.expiration-message-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    font-size: 1rem;
+}
+
+
+.expiration-message > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.expiration-message strong {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+.expiration-message span {
+    font-size: 0.72rem;
+    line-height: 1.5;
+}
+
+
+/* Active */
+
+.expiration-message-active {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #15803d;
+}
+
+
+.expiration-message-active .expiration-message-icon {
+    background: #dcfce7;
+}
+
+
+/* Never */
+
+.expiration-message-never {
+    background: #f5f3ff;
+    border-color: #ddd6fe;
+    color: #6d28d9;
+}
+
+
+.expiration-message-never .expiration-message-icon {
+    background: #ede9fe;
+}
+
+
+/* Expired */
+
+.expiration-message-expired {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+}
+
+
+.expiration-message-expired .expiration-message-icon {
+    background: #fee2e2;
+}
+
+
+/* Detail Header Status */
+
+.detail-card-header .status-badge {
+    min-height: 30px;
+    padding: 7px 12px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .expiration-message {
+        align-items: flex-start;
+    }
+
+}
