@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import ShortURLForm
 from .models import ShortURL
-
+from django.db.models import Q, Sum
 
 def home(request):
     short_url = None
@@ -41,9 +41,9 @@ def redirect_short_url(request, short_code):
 
 
 def dashboard(request):
-    search_query = request.GET.get("q", "").strip()
+    links = ShortURL.objects.all().order_by("-created_at")
 
-    links = ShortURL.objects.all()
+    search_query = request.GET.get("q", "").strip()
 
     if search_query:
         links = links.filter(
@@ -53,22 +53,28 @@ def dashboard(request):
 
     total_links = ShortURL.objects.count()
 
-    total_clicks = sum(
-        link.clicks
-        for link in ShortURL.objects.all()
+    total_clicks = ShortURL.objects.aggregate(
+        total=Sum("clicks")
+    )["total"] or 0
+
+    average_clicks = (
+        round(total_clicks / total_links, 1)
+        if total_links
+        else 0
     )
 
     context = {
         "links": links,
+        "search_query": search_query,
         "total_links": total_links,
         "total_clicks": total_clicks,
-        "search_query": search_query,
+        "average_clicks": average_clicks,
     }
 
     return render(
         request,
         "links/dashboard.html",
-        context,
+        context
     )
 
 
