@@ -1732,7 +1732,7 @@ h1 span {
 
 
 /* =========================================================
-   DASHBOARD PAGINATION
+   PAGINATION
 ========================================================= */
 
 .pagination-wrapper {
@@ -1742,23 +1742,25 @@ h1 span {
 
     gap: 20px;
 
-    padding: 18px 25px;
+    padding: 18px 24px;
 
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #e5e7eb;
 
-    background: #fafbff;
+    background: #fafafa;
 }
 
 
 .pagination-info {
     color: #64748b;
 
-    font-size: 0.72rem;
+    font-size: 0.78rem;
 }
 
 
 .pagination-info strong {
     color: #334155;
+
+    font-weight: 700;
 }
 
 
@@ -1770,16 +1772,16 @@ h1 span {
 }
 
 
-.pagination-number,
-.pagination-button {
+.pagination-button,
+.pagination-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    min-width: 32px;
-    height: 32px;
+    min-width: 34px;
+    height: 34px;
 
-    padding: 0 9px;
+    padding: 0 10px;
 
     border: 1px solid #e2e8f0;
 
@@ -1789,25 +1791,28 @@ h1 span {
 
     color: #64748b;
 
-    font-size: 0.72rem;
-    font-weight: 650;
+    font-size: 0.75rem;
+    font-weight: 600;
 
     text-decoration: none;
 
     transition:
         background 0.2s ease,
         border-color 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 
-.pagination-number:hover,
-.pagination-button:hover {
+.pagination-button:hover,
+.pagination-number:hover {
     border-color: #c7d2fe;
 
     background: #eef2ff;
 
     color: #4f46e5;
+
+    transform: translateY(-1px);
 }
 
 
@@ -1825,16 +1830,21 @@ h1 span {
 }
 
 
-@media (max-width: 600px) {
+.pagination-button.disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    pointer-events: none;
+}
+
+
+@media (max-width: 650px) {
 
     .pagination-wrapper {
-        align-items: stretch;
+        align-items: center;
 
         flex-direction: column;
-    }
-
-    .pagination-info {
-        text-align: center;
     }
 
     .pagination {
