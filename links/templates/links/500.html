@@ -1,0 +1,60 @@
+{% extends "links/base.html" %}
+
+{% block title %}
+    Server Error — Shortify
+{% endblock %}
+
+
+{% block content %}
+
+<section class="error-page">
+
+    <div class="container">
+
+        <div class="error-card">
+
+            <div class="error-icon">
+                <i class="bi bi-exclamation-triangle"></i>
+            </div>
+
+            <span class="error-code">
+                500
+            </span>
+
+            <h1>
+                Something went wrong
+            </h1>
+
+            <p>
+                Shortify encountered an unexpected server error.
+                Please try again in a moment.
+            </p>
+
+            <div class="error-actions">
+
+                <a
+                    href="{% url 'links:home' %}"
+                    class="primary-button"
+                >
+                    <i class="bi bi-house"></i>
+                    Back to Home
+                </a>
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    onclick="window.location.reload()"
+                >
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Try Again
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
