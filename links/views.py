@@ -161,3 +161,19 @@ def delete_link(request, short_code):
     return redirect(
         "links:dashboard"
     )
+
+
+def custom_404(request, exception):
+    return render(
+        request,
+        "links/404.html",
+        status=404,
+    )
+
+
+def custom_500(request):
+    return render(
+        request,
+        "links/500.html",
+        status=500,
+    )
