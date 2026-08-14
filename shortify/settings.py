@@ -230,3 +230,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = (
     "django.core.mail.backends.console.EmailBackend"
 )
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://shortify-m1qe.onrender.com",
+]
