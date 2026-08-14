@@ -8,39 +8,26 @@ from django.utils import timezone
 from .forms import ShortURLForm
 from .models import ShortURL
 
-
 def home(request):
     short_url = None
-    short_url_full = None
 
     if request.method == "POST":
         form = ShortURLForm(request.POST)
 
         if form.is_valid():
-            short_url = form.save(commit=False)
-
-            expiration = form.cleaned_data.get("expiration")
-
-            if expiration == "1_day":
-                short_url.expires_at = timezone.now() + timedelta(days=1)
-
-            elif expiration == "7_days":
-                short_url.expires_at = timezone.now() + timedelta(days=7)
-
-            elif expiration == "30_days":
-                short_url.expires_at = timezone.now() + timedelta(days=30)
-
-            else:
-                short_url.expires_at = None
-
-            short_url.save()
-
-            short_url_full = request.build_absolute_uri(
-                f"/{short_url.short_code}/"
-            )
+            short_url = form.save()
 
     else:
         form = ShortURLForm()
+
+    short_url_full = None
+
+    if short_url:
+        short_url_full = (
+            f"{request.scheme}://"
+            f"{request.get_host()}/"
+            f"{short_url.short_code}/"
+        )
 
     context = {
         "form": form,
@@ -53,6 +40,51 @@ def home(request):
         "links/home.html",
         context,
     )
+
+# def home(request):
+#     short_url = None
+#     short_url_full = None
+
+#     if request.method == "POST":
+#         form = ShortURLForm(request.POST)
+
+#         if form.is_valid():
+#             short_url = form.save(commit=False)
+
+#             expiration = form.cleaned_data.get("expiration")
+
+#             if expiration == "1_day":
+#                 short_url.expires_at = timezone.now() + timedelta(days=1)
+
+#             elif expiration == "7_days":
+#                 short_url.expires_at = timezone.now() + timedelta(days=7)
+
+#             elif expiration == "30_days":
+#                 short_url.expires_at = timezone.now() + timedelta(days=30)
+
+#             else:
+#                 short_url.expires_at = None
+
+#             short_url.save()
+
+#             short_url_full = request.build_absolute_uri(
+#                 f"/{short_url.short_code}/"
+#             )
+
+#     else:
+#         form = ShortURLForm()
+
+#     context = {
+#         "form": form,
+#         "short_url": short_url,
+#         "short_url_full": short_url_full,
+#     }
+
+#     return render(
+#         request,
+#         "links/home.html",
+#         context,
+#     )
 
 
 def redirect_short_url(request, short_code):
