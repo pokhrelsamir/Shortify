@@ -135,81 +135,61 @@
 
             <!-- Result -->
 
-            {% if short_url %}
+{% if short_url %}
 
-                <div class="result-card">
+    <div class="result-card">
 
-                    <!-- Success Icon -->
-
-                    <div class="result-icon">
-
-                        <i class="bi bi-check-lg"></i>
-
-                    </div>
+        <div class="result-icon">
+            <i class="bi bi-check-lg"></i>
+        </div>
 
 
-                    <!-- Result Content -->
+        <div class="result-content">
 
-                    <div class="result-content">
+            <span>
+                Your shortened URL
+            </span>
 
-                        <span>
-                            Your shortened URL
-                        </span>
-
-
-                        <a
-                            href="{% url 'links:redirect_short_url' short_url.short_code %}"
-                            id="short-url"
-                        >
-                            {{ short_url_full }}
-                        </a>
+            <a
+                href="{% url 'links:redirect_short_url' short_url.short_code %}"
+                id="short-url"
+            >
+                {{ short_url_full }}
+            </a>
 
 
-                        <!-- Expiration Information -->
+            <div class="result-expiration">
 
-                        {% if short_url.expires_at %}
+                <i class="bi bi-clock"></i>
 
-                            <span class="result-expiration">
+                {% if short_url.expires_at %}
 
-                                <i class="bi bi-clock"></i>
+                    Expires:
+                    {{ short_url.expires_at|date:"M d, Y · h:i A" }}
 
-                                Expires
-                                {{ short_url.expires_at|date:"M d, Y h:i A" }}
+                {% else %}
 
-                            </span>
+                    Never expires
 
-                        {% else %}
+                {% endif %}
 
-                            <span class="result-expiration">
+            </div>
 
-                                <i class="bi bi-infinity"></i>
-
-                                Never expires
-
-                            </span>
-
-                        {% endif %}
-
-                    </div>
+        </div>
 
 
-                    <!-- Copy -->
+        <button
+            type="button"
+            class="copy-button"
+            onclick="copyShortURL()"
+        >
+            <i class="bi bi-copy"></i>
+            Copy
+        </button>
 
-                    <button
-                        type="button"
-                        class="copy-button"
-                        onclick="copyShortURL()"
-                    >
+    </div>
 
-                        <i class="bi bi-copy"></i>
-
-                        Copy
-
-                    </button>
-
-                </div>
-
-            {% endif %}
+    {% endif %}
 
         </div>
 
