@@ -2701,3 +2701,721 @@ h1 span {
 .result-expiration i {
     color: #6366f1;
 }
+
+
+
+/* =========================================================
+   SHORTIFY — FINAL RESPONSIVE POLISH
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Global Responsive Improvements
+--------------------------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img,
+svg {
+    max-width: 100%;
+}
+
+button,
+a,
+input,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* ---------------------------------------------------------
+   Large Desktop
+--------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+
+    .container {
+        width: min(1120px, 92%);
+    }
+
+    .hero {
+        padding-top: 95px;
+        padding-bottom: 100px;
+    }
+
+    .dashboard {
+        padding-top: 70px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Tablet
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .container {
+        width: min(94%, 760px);
+    }
+
+    .navbar {
+        padding: 17px 0;
+    }
+
+    .brand {
+        font-size: 1.25rem;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    .hero {
+        padding: 60px 0 70px;
+    }
+
+    .hero-description {
+        margin-bottom: 30px;
+    }
+
+    .shortener-card {
+        padding: 20px;
+    }
+
+    .dashboard {
+        padding: 45px 0 60px;
+    }
+
+    .dashboard-header {
+        gap: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 2.15rem;
+    }
+
+    .links-card {
+        border-radius: 14px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Mobile Navigation
+--------------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+    .container {
+        width: min(92%, 560px);
+    }
+
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .navbar-content {
+        min-height: 40px;
+    }
+
+    .brand {
+        font-size: 1.15rem;
+    }
+
+    .brand i {
+        font-size: 1.4rem;
+    }
+
+    nav {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        align-items: flex-start;
+        padding: 42px 0 55px;
+    }
+
+    .hero-badge {
+        margin-bottom: 18px;
+        padding: 7px 12px;
+        font-size: 0.78rem;
+    }
+
+    h1 {
+        max-width: 100%;
+        font-size: clamp(2.2rem, 11vw, 3.2rem);
+        line-height: 1.08;
+    }
+
+    .hero-description {
+        max-width: 430px;
+        margin: 18px auto 28px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+
+    /* Shortener */
+
+    .shortener-card {
+        width: 100%;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .url-input {
+        width: 100%;
+        min-height: 50px;
+        padding: 14px 15px;
+        font-size: 0.92rem;
+    }
+
+    .shorten-button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        padding: 13px 16px;
+    }
+
+
+    /* Result */
+
+    .result-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+    }
+
+    .result-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .result-content {
+        width: auto;
+    }
+
+    .result-content a {
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .copy-button {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 42px;
+        justify-content: center;
+    }
+
+
+    /* Expiration */
+
+    .expiration-wrapper {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+        padding: 13px;
+    }
+
+    .expiration-label {
+        align-items: flex-start;
+    }
+
+    .expiration-label span {
+        line-height: 1.4;
+    }
+
+    .expiration-control,
+    .expiration-select {
+        width: 100%;
+    }
+
+    .expiration-select {
+        min-height: 42px;
+    }
+
+
+    /* Dashboard */
+
+    .dashboard {
+        padding: 38px 0 55px;
+    }
+
+    .dashboard-header {
+        align-items: stretch;
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+
+    .dashboard-header p {
+        margin-top: 8px;
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+
+    .dashboard-header .primary-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+
+    /* Statistics */
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 17px;
+    }
+
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .stat-card strong {
+        font-size: 1.45rem;
+    }
+
+
+    /* Search */
+
+    .search-form {
+        min-height: 48px;
+        padding: 10px 13px;
+    }
+
+    .search-form input {
+        min-width: 0;
+        font-size: 0.88rem;
+    }
+
+
+    /* Dashboard Header */
+
+    .table-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding: 17px;
+    }
+
+    .table-header h2 {
+        font-size: 1rem;
+    }
+
+
+    /* Link Rows */
+
+    .link-row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 13px;
+        padding: 16px;
+    }
+
+    .link-main {
+        width: 100%;
+    }
+
+    .link-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .short-code {
+        font-size: 0.9rem;
+    }
+
+    .original-url {
+        max-width: 100%;
+        font-size: 0.76rem;
+    }
+
+    .link-clicks {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+        margin-left: 53px;
+    }
+
+    .link-clicks strong {
+        font-size: 0.95rem;
+    }
+
+    .link-clicks span {
+        font-size: 0.72rem;
+    }
+
+    .link-date {
+        margin-left: 53px;
+        font-size: 0.78rem;
+    }
+
+    .link-status {
+        width: auto;
+        margin-left: 53px;
+        justify-content: flex-start;
+    }
+
+    .link-actions {
+        margin-left: 53px;
+        gap: 7px;
+    }
+
+    .link-actions a {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    /* Empty State */
+
+    .empty-state {
+        padding: 55px 18px;
+    }
+
+
+    /* Pagination */
+
+    .pagination-wrapper {
+        padding: 16px;
+    }
+
+    .pagination-info {
+        text-align: center;
+        white-space: normal;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Small Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .hero {
+        padding-top: 32px;
+    }
+
+    h1 {
+        font-size: 2.15rem;
+    }
+
+    .hero-description {
+        font-size: 0.88rem;
+    }
+
+    .shortener-card {
+        padding: 13px;
+    }
+
+    .result-card {
+        padding: 12px;
+    }
+
+    .result-content span {
+        font-size: 0.72rem;
+    }
+
+    .result-content a {
+        font-size: 0.78rem;
+    }
+
+
+    /* Dashboard */
+
+    .dashboard-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .stat-card {
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 1.05rem;
+    }
+
+
+    /* Link rows */
+
+    .link-row {
+        padding: 14px;
+    }
+
+    .link-clicks,
+    .link-date,
+    .link-status,
+    .link-actions {
+        margin-left: 0;
+    }
+
+    .link-clicks {
+        padding-left: 2px;
+    }
+
+    .link-actions {
+        padding-top: 2px;
+    }
+
+
+    /* Detail */
+
+    .detail-page {
+        padding: 28px 0 45px;
+    }
+
+    .detail-card {
+        border-radius: 16px;
+    }
+
+    .detail-card-header {
+        padding: 18px;
+    }
+
+    .detail-heading {
+        gap: 11px;
+    }
+
+    .detail-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        font-size: 1.2rem;
+    }
+
+    .detail-heading h1 {
+        font-size: 1.3rem;
+    }
+
+    .url-section,
+    .original-section,
+    .statistics-section {
+        padding: 18px;
+    }
+
+    .short-url-box {
+        padding: 14px;
+    }
+
+    .short-url {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        line-height: 1.5;
+    }
+
+    .original-url-box {
+        padding: 12px;
+    }
+
+    .destination-content a {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        line-height: 1.45;
+    }
+
+    .detail-stats-grid {
+        gap: 9px;
+    }
+
+    .detail-stat {
+        padding: 13px;
+    }
+
+    .danger-section {
+        padding: 18px;
+    }
+
+    .danger-content {
+        align-items: flex-start;
+    }
+
+    .danger-content p {
+        line-height: 1.45;
+    }
+
+
+    /* Expired page */
+
+    .expired-card {
+        padding: 32px 18px;
+    }
+
+    .expired-icon {
+        width: 62px;
+        height: 62px;
+        margin-bottom: 18px;
+    }
+
+    .expired-card h1 {
+        font-size: 1.45rem;
+    }
+
+    .expired-description {
+        font-size: 0.84rem;
+    }
+
+    .expired-url {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        font-size: 0.76rem;
+    }
+
+
+    /* Pagination */
+
+    .pagination-wrapper {
+        gap: 12px;
+        padding: 15px 12px;
+    }
+
+    .pagination {
+        gap: 4px;
+    }
+
+    .pagination-button {
+        min-width: 72px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Very Small Devices
+--------------------------------------------------------- */
+
+@media (max-width: 360px) {
+
+    .brand {
+        font-size: 1rem;
+    }
+
+    .hero-badge {
+        font-size: 0.72rem;
+    }
+
+    h1 {
+        font-size: 1.95rem;
+    }
+
+    .hero-description {
+        font-size: 0.82rem;
+    }
+
+    .shortener-card {
+        padding: 10px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.65rem;
+    }
+
+    .pagination-button {
+        min-width: 34px;
+        padding: 0 8px;
+        font-size: 0;
+    }
+
+    .pagination-button i {
+        font-size: 0.7rem;
+    }
+
+    .pagination-number {
+        width: 31px;
+        height: 31px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Touch Devices
+--------------------------------------------------------- */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .primary-button,
+    .shorten-button,
+    .copy-button,
+    .detail-copy-button,
+    .delete-button,
+    .secondary-button {
+        min-height: 44px;
+    }
+
+    .link-actions a {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Reduced Motion
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}
