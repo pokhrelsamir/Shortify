@@ -28,6 +28,14 @@ DEBUG = config(
     cast=bool,
 )
 
+SECRET_KEY = config("SECRET_KEY")
+
+DEBUG = config(
+    "DEBUG",
+    default=False,
+    cast=bool,
+)
+
 ALLOWED_HOSTS = [
     host.strip()
     for host in config(
@@ -36,7 +44,6 @@ ALLOWED_HOSTS = [
     ).split(",")
     if host.strip()
 ]
-
 
 # =========================================================
 # APPLICATIONS
