@@ -445,7 +445,7 @@ This project was built to practice core full-stack software development workflow
 
 **Samir Pokhrel**
 
-*B.Sc. Computer Science and Information Technology*
+*Bachelor of Science in Computer Science and Information Technology*
 
 ---
 
