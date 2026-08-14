@@ -3419,3 +3419,132 @@ select:focus-visible {
     }
 
 }
+
+
+
+/* =========================================================
+   ERROR PAGES
+   ========================================================= */
+
+.error-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+.error-card {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    padding: 55px 35px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.error-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+
+    font-size: 2rem;
+}
+
+.error-code {
+    display: block;
+    margin-bottom: 5px;
+
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+
+    color: #6366f1;
+}
+
+.error-card h1 {
+    margin: 0 0 12px;
+
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.error-card p {
+    max-width: 480px;
+    margin: 0 auto 28px;
+
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.error-actions .primary-button,
+.error-actions .secondary-button {
+    min-height: 44px;
+    padding: 11px 18px;
+}
+
+
+/* ---------------------------------------------------------
+   Error Page — Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .error-page {
+        min-height: calc(100vh - 70px);
+        padding: 35px 0;
+    }
+
+    .error-card {
+        padding: 40px 20px;
+        border-radius: 18px;
+    }
+
+    .error-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 18px;
+        border-radius: 16px;
+        font-size: 1.6rem;
+    }
+
+    .error-card h1 {
+        font-size: 1.55rem;
+    }
+
+    .error-card p {
+        font-size: 0.86rem;
+        line-height: 1.6;
+    }
+
+    .error-actions {
+        flex-direction: column;
+    }
+
+    .error-actions .primary-button,
+    .error-actions .secondary-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
