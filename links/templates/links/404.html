@@ -1,0 +1,59 @@
+{% extends "links/base.html" %}
+
+{% block title %}
+    Page Not Found — Shortify
+{% endblock %}
+
+
+{% block content %}
+
+<section class="error-page">
+
+    <div class="container">
+
+        <div class="error-card">
+
+            <div class="error-icon">
+                <i class="bi bi-link-45deg"></i>
+            </div>
+
+            <span class="error-code">
+                404
+            </span>
+
+            <h1>
+                Page not found
+            </h1>
+
+            <p>
+                The page or shortened URL you're looking for
+                doesn't exist or may have been removed.
+            </p>
+
+            <div class="error-actions">
+
+                <a
+                    href="{% url 'links:home' %}"
+                    class="primary-button"
+                >
+                    <i class="bi bi-house"></i>
+                    Back to Home
+                </a>
+
+                <a
+                    href="{% url 'links:dashboard' %}"
+                    class="secondary-button"
+                >
+                    <i class="bi bi-grid"></i>
+                    Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
