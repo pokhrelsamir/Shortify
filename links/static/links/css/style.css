@@ -190,6 +190,7 @@ h1 span {
 .shorten-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 
     padding: 0 22px;
@@ -206,8 +207,42 @@ h1 span {
 }
 
 
+.shortener-card .expiration-wrapper + .shorten-button {
+    width: 100%;
+    min-height: 56px;
+
+    margin-top: 18px;
+    padding: 15px 22px;
+
+    font-size: 1rem;
+    font-weight: 750;
+    line-height: 1.2;
+
+    box-shadow:
+        0 8px 18px rgba(79, 70, 229, 0.16);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
 .shorten-button:hover {
     background: #4338ca;
+}
+
+
+.shortener-card .expiration-wrapper + .shorten-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 22px rgba(79, 70, 229, 0.22);
+}
+
+
+.shortener-card .expiration-wrapper + .shorten-button:active {
+    transform: translateY(0);
 }
 
 
@@ -2049,11 +2084,11 @@ h1 span {
 
 
 .expiration-select {
-    min-width: 130px;
+    min-width: 148px;
 
-    height: 38px;
+    min-height: 44px;
 
-    padding: 0 34px 0 12px;
+    padding: 10px 40px 10px 14px;
 
     border: 1px solid #dfe4ec;
 
@@ -2069,6 +2104,7 @@ h1 span {
 
     font-size: 0.75rem;
     font-weight: 650;
+    line-height: 1.25;
 
     cursor: pointer;
 
@@ -3026,7 +3062,8 @@ select:focus-visible {
     }
 
     .expiration-select {
-        min-height: 42px;
+        min-height: 48px;
+        padding: 12px 40px 12px 14px;
     }
 
 
