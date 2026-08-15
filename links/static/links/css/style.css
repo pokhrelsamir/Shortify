@@ -2551,58 +2551,54 @@ h1 span {
 }
 
 /* =========================================================
-   EXPIRATION FORM
+   EXPIRATION FORM — FINAL POLISH
 ========================================================= */
 
 .form-field {
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
-
     margin-bottom: 18px;
 }
 
 
+/* ---------------------------------------------------------
+   Field Label
+--------------------------------------------------------- */
+
 .form-field label {
     display: flex;
-
     align-items: center;
-
     gap: 6px;
 
     color: #334155;
 
-    font-size: 0.76rem;
-
+    font-size: 0.82rem;
     font-weight: 700;
 }
-
 
 .form-field label i {
     color: #6366f1;
 }
 
 
-/* URL Input */
+/* ---------------------------------------------------------
+   URL Input
+--------------------------------------------------------- */
 
 .form-field .url-input {
     width: 100%;
-
-    box-sizing: border-box;
+    min-height: 50px;
 
     padding: 13px 15px;
 
     border: 1px solid #e2e8f0;
-
     border-radius: 10px;
 
     background: #ffffff;
-
     color: #0f172a;
 
-    font-size: 0.82rem;
+    font-size: 0.9rem;
 
     outline: none;
 
@@ -2610,7 +2606,6 @@ h1 span {
         border-color 0.2s ease,
         box-shadow 0.2s ease;
 }
-
 
 .form-field .url-input:focus {
     border-color: #818cf8;
@@ -2620,26 +2615,38 @@ h1 span {
 }
 
 
-/* Expiration Select */
+/* ---------------------------------------------------------
+   Expiration Field
+--------------------------------------------------------- */
 
-.expiration-select {
+.expiration-field {
+    margin-bottom: 20px;
+}
+
+
+/* ---------------------------------------------------------
+   Expiration Select
+--------------------------------------------------------- */
+
+.expiration-field .expiration-select {
+    display: block;
+
     width: 100%;
+    min-height: 50px;
 
-    box-sizing: border-box;
-
-    padding: 12px 14px;
+    padding: 12px 42px 12px 15px;
 
     border: 1px solid #e2e8f0;
-
     border-radius: 10px;
 
-    background: #ffffff;
-
+    background-color: #ffffff;
     color: #334155;
 
-    font-size: 0.8rem;
-
+    font-family: inherit;
+    font-size: 0.9rem;
     font-weight: 600;
+
+    line-height: 1.4;
 
     outline: none;
 
@@ -2647,11 +2654,16 @@ h1 span {
 
     transition:
         border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
+.expiration-field .expiration-select:hover {
+    border-color: #c7d2fe;
+    background-color: #fafbff;
+}
 
-.expiration-select:focus {
+.expiration-field .expiration-select:focus {
     border-color: #818cf8;
 
     box-shadow:
@@ -2659,22 +2671,79 @@ h1 span {
 }
 
 
-.expiration-select:hover {
-    border-color: #cbd5e1;
-}
-
-
-/* Expiration Field */
-
-.expiration-field {
-    margin-bottom: 20px;
-}
-
-
-/* Submit Button */
+/* ---------------------------------------------------------
+   Submit Button
+--------------------------------------------------------- */
 
 .form-field + .expiration-field + .shorten-button {
     width: 100%;
+
+    min-height: 52px;
+
+    justify-content: center;
+
+    padding: 14px 20px;
+
+    font-size: 0.95rem;
+    font-weight: 750;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 6px 16px rgba(79, 70, 229, 0.15);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-field + .expiration-field + .shorten-button:hover {
+    background: #4338ca;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(79, 70, 229, 0.2);
+}
+
+.form-field + .expiration-field + .shorten-button:active {
+    transform: translateY(0);
+}
+
+
+/* ---------------------------------------------------------
+   Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .form-field {
+        gap: 7px;
+        margin-bottom: 16px;
+    }
+
+    .form-field label {
+        font-size: 0.8rem;
+    }
+
+    .form-field .url-input,
+    .expiration-field .expiration-select {
+        min-height: 48px;
+
+        font-size: 0.88rem;
+    }
+
+    .expiration-field {
+        margin-bottom: 18px;
+    }
+
+    .form-field + .expiration-field + .shorten-button {
+        min-height: 50px;
+
+        font-size: 0.92rem;
+    }
+
 }
 
 /* =========================================================
