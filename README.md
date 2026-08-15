@@ -451,4 +451,4 @@ This project was built to practice core full-stack software development workflow
 
 ## 📄 License
 
-This project is open source and available under the terms specified in the [LICENSE](https://www.google.com/search?q=LICENSE) file.
+This project is open source and available under the terms specified in the [LICENSE](https://github.com/pokhrelsamir/Shortify/blob/main/LICENSE) file.
